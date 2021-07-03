@@ -1,0 +1,36 @@
+11:19:47 [info] [LOG SESSION] ---------- START ----------
+11:19:47 [info] [PluginFactory] loading plugins
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libsupereqdsp.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libmacosmediakeys.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libtaglibreader.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libstockencoders.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libserver.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libopenmptdecoder.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libhttpdatastream.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libgmedecoder.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libnullout.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libffmpegdecoder.dylib
+11:19:47 [info] [PluginFactory] loaded: /opt/homebrew/share/musikcube/plugins/libcoreaudioout.dylib
+11:19:47 [info] [Indexer] indexer source 197490949 running...
+11:19:47 [info] [Indexer] indexer source 197490949 finished
+11:19:47 [info] [Indexer] indexer source 1859739243 running...
+11:19:47 [info] [Indexer] indexer source 1859739243 finished
+11:19:47 [info] [Indexer] scanning /Users/aaravadarsh/Music/
+11:19:47 [info] [Indexer] scan completed successfully
+11:19:47 [info] [Indexer] cleanup 1/2
+11:19:47 [info] [Indexer] cleanup 2/2
+11:19:47 [info] [Indexer] optimizing
+11:19:47 [info] [macosmediakeys] listening to media keys
+11:19:47 [info] [Indexer] done!
+11:19:47 [info] [GaplessTransport] starting track at /Users/aaravadarsh/Music/Music/Media.localized/Music/XXXTENTACION/17/1-02 Jocelyn Flores.mp3
+11:19:47 [info] [Player] new instance created
+11:19:47 [info] [GaplessTransport] stop
+11:19:47 [info] [Stream] opening /Users/aaravadarsh/Music/Music/Media.localized/Music/XXXTENTACION/17/1-02 Jocelyn Flores.mp3
+11:19:47 [info] [LocalFileStream] opening file: /Users/aaravadarsh/Music/Music/Media.localized/Music/XXXTENTACION/17/1-02 Jocelyn Flores.mp3
+11:19:47 [info] [ffmpegdecoder] parsing data stream...
+11:19:47 [info] [ffmpegdecoder] found audio stream!
+11:19:47 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
+11:19:47 [info] [Streams] found a decoder for /Users/aaravadarsh/Music/Music/Media.localized/Music/XXXTENTACION/17/1-02 Jocelyn Flores.mp3
+11:19:47 [warning] [ffmpegdecoder] invalid packet detected, discarding.
+11:19:52 [info] [GaplessTransport] stop
+11:19:52 [info] [macosmediakeys] unregistered media keys

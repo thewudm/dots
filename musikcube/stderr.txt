@@ -1,0 +1,5 @@
+[2021-07-02 11:19:47] [info] asio async_connect error: system:61 (Connection refused)
+[2021-07-02 11:19:47] [info] Error getting remote endpoint: system:22 (Invalid argument)
+[2021-07-02 11:19:47] [error] handle_connect error: Underlying Transport Error
+[mp3float @ 0x1278dbc00] Could not update timestamps for skipped samples.
+[2021-07-02 11:19:52] [error] handle_read_frame error: websocketpp.transport:7 (End of File)

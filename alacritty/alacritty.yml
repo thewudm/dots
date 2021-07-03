@@ -1,0 +1,97 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Setup term for programs to be able to use it
+window:
+  dimensions:
+    columns: 140
+    lines: 38
+  padding:
+    x: 15
+    y: 15
+  decorations: none #Still won't show in a window manger, but will in a desktop environment
+scrolling:
+  history: 1000
+  multiplier: 3
+background_opacity: 1
+window.dynamic_title: true
+
+
+
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 1000
+
+font:
+  # Normal font face - Also used to draw glyphs on tmux & VIM
+  # NOTE: You may use any font you'd like but make sure the normal fonts
+  # support ligatures/glyphs. That's used by tmux & VIM to provide a better
+  # UI for powerline & tmux bottom bar.
+  normal:
+    # Font name
+    family: Menlo
+    # Font face
+    style: Regular
+
+    # Font name
+    # family: scientifica
+    # Font face
+    # style: Medium
+
+  # Bold font face
+  bold:
+    family: Menlo
+    style: Bold
+    # family: scientifica
+    # style: Bold
+
+  # Italic font face
+  italic:
+    family: Menlo
+    style: Italic
+    # family: scientifica
+    # style: Italic
+
+  # Font size
+  size: 12.0
+  # size: 19.0
+
+  # Better font rendering for mac
+  use_thin_strokes: true
+
+# Colors (Dracula)
+# Colors (Nord)
+colors:
+   # Default colors
+   primary:
+     background: '#2E3440'
+     foreground: '#D8DEE9'
+
+   # Normal colors
+   normal:
+     black:   '#3B4252'
+     red:     '#BF616A'
+     green:   '#A3BE8C'
+     yellow:  '#EBCB8B'
+     blue:    '#81A1C1'
+     magenta: '#B48EAD'
+     cyan:    '#88C0D0'
+     white:   '#E5E9F0'
+
+   # Bright colors
+   bright:
+     black:   '#4C566A'
+     red:     '#BF616A'
+     green:   '#A3BE8C'
+     yellow:  '#EBCB8B'
+     blue:    '#81A1C1'
+     magenta: '#B48EAD'
+     cyan:    '#8FBCBB'
+     white:   '#ECEFF4'
+
+
+
+# cursor:
+  # style:
+  # shape: underline
