@@ -1,0 +1,58 @@
+/* xanthia is a notification system for Ubersicht */
+/* written by daniel neemann (@zzzeyez) */
+
+/* get monitor width */
+.screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.xanthiamessage {
+  /* body */
+  background-color: var(--background-xanthia, var(--default-background-xanthia, #202020));
+  opacity: var(--opacity-xanthia, 1);
+  display: block;
+  white-space: nowrap;
+  position: absolute;
+	max-width: calc(100vw / 2);
+  overflow: hidden;
+
+  /* alignment */
+  top: 0;
+  right: var(--alignment-right-xanthia, 0);
+  bottom: auto;
+  left: var(--alignment-left-xanthia, auto);
+  margin-top: var(--margin-top-xanthia, var(--default-margin-top-xanthia, 10px));
+  margin-right: var(--margin-horizontal-xanthia, var(--default-margin-horizontal-xanthia, 10px));
+  margin-left: var(--margin-horizontal-xanthia, 10px);
+
+  /* typography */
+  color: var(--foreground-xanthia, var(--default-foreground-xanthia, #fafafa));
+  font-family: var(--font-xanthia, var(--default-xanthia-font-family, -apple-system)), BlinkMacSystemFont, Lucida Grande;
+  font-size: var(--font-size-xanthia, var(--default-xanthia-font-size, 11.5px));
+  line-height: var(--height-xanthia, var(--default-height-xanthia-image, 29px));
+  text-overflow: ellipsis;
+  padding: 0 var(--text-padding, 3ch);
+
+  /* etc */
+  border-top-left-radius: var(--border-radius-left-xanthia, 3px);
+  border-bottom-left-radius: var(--border-radius-right-xanthia, 3px);
+  border-top-right-radius: var(--border-radius-right-xanthia, var(--default-border-radius-right-xanthia, 3px));
+  border-bottom-right-radius: var(--border-radius-left-xanthia, var(--default-border-radius-right-xanthia, 3px));
+  box-shadow: var(--shadow-xanthia, var(--default-shadow-xanthia, 0px 4px 10px 4px rgba(0, 0, 0, 0.1)));
+
+  /* fade and order */
+  z-index: 2;
+  animation: fadeinout var(--time-visible-xanthia, auto) linear forwards;
+}
+
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  1%,
+  99% {
+    opacity: var(--opacity-xanthia, 1);
+  }
+}

