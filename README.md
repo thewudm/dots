@@ -1,5 +1,7 @@
 Dots for my setup.
 
+Ignore the ```.DS_Store``` file because it is something with MacOS I can't figure out.
+
 Note:
     - Put the stuff in ```Ubersicht-widgets/``` into your ubersicht folder.
     - I have deactivated ```pecan-workspace-jsx``` because it didn't really work for me.
