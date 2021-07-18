@@ -19,10 +19,10 @@ yabai -m space 5 --label five
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Disk Utility$" manage=off
+yabai -m rule --add app="^scrcpy$" manage=off
 yabai -m rule --add app="^System Information$" manage=off
 yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
 #yabai -m rule --add app="^zoom.us$" manage=off
 yabai -m rule --add app="^Preview$" manage=off
@@ -35,11 +35,15 @@ yabai -m rule --add app="^OpenEmu$" manage=off
 yabai -m rule --add app="^sixtyforce$" manage=off
 #yabai -m rule --add app="^Discord$" manage=off
 yabai -m rule --add app="^Dash$" manage=off
-
+yabai -m rule --add app="^Music$" manage=off
+yabai -m rule --add app="^BlueJ$" manage=off
 yabai -m rule --add app="^Emacs$" manage=on
 
+# kill any existing limelight process if one exists, before we launch a new one
+killall limelight &> /dev/null
+limelight &> /dev/null &
 
-# global settings
+#global settings
 yabai -m config status_bar                   on
 yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off

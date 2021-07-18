@@ -27,7 +27,12 @@ hyper - 0x21 : yabai -m window --swap east # 0x21 is the "[" key
 hyper - u : /Users/jesseskelton/CustomScripts/SwitchSpaces/moveWindowLeftAndFollowFocus.sh
 hyper - p : /Users/jesseskelton/CustomScripts/SwitchSpaces/moveWindowRightAndFollowFocus.sh
 
-## focus display
+## Change which window is focused
+hyper - k : yabai -m window --focus west
+hyper - o : yabai -m window --focus south
+hyper - p : yabai -m window --focus north
+hyper - l : yabai -m window --focus east 
+
 ctrl + cmd - 1 : yabai -m window --display 1 yabai -m display --focus 1
 ctrl + cmd - 2 : yabai -m window --display 2 yabai -m display --focus 2
 ctrl + cmd - 3 : yabai -m window --display 3 yabai -m display --focus 3
@@ -58,23 +63,20 @@ shift + lalt + lcmd + ctrl + ralt - 1 : yabai -m query --spaces --space | jq -re
 shift + lalt + lcmd + ctrl + ralt - 2 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
 shift + lalt + lcmd + ctrl + ralt - 3 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '5' ]]; then yabai -m window --space 6; elif [[ '{}' = '6' ]]; then yabai -m window --space 5; fi"
 
-# show next space per display
-#hyper - 1 : /Users/jesseskelton/CustomScripts/SwitchSpaces/switchAndFocus.sh 1
-#hyper - 2 : /Users/jesseskelton/CustomScripts/SwitchSpaces/switchAndFocus.sh 2
-#hyper - 3 : /Users/jesseskelton/CustomScripts/SwitchSpaces/switchAndFocus.sh 3
-ctrl + alt + cmd + lshift - 1 : /Users/jesseskelton/CustomScripts/SwitchSpaces/switchAndFocusSIP.sh 1
-ctrl + alt + cmd + lshift - 2 : /Users/jesseskelton/CustomScripts/SwitchSpaces/switchAndFocusSIP.sh 2
-ctrl + alt + cmd + lshift - 3 : /Users/jesseskelton/CustomScripts/SwitchSpaces/switchAndFocusSIP.sh 3
-
 ## toggle window fullscreen zoom
 hyper - f : yabai -m window --toggle zoom-fullscreen
 
-hyper - return : open -na /Applications/Alacritty.app
+hyper - return : open -na /Applications/kitty.app
 
 hyper - c : open  /Applications/Google\ Chrome.app
 
+hyper - d : open  /Applications/Discord.app
+
+hyper - s : open  /Applications/Spotify.app
+
 hyper - a : open /System/Applications/Utilities/Activity\ Monitor.app
 
+hyper - z : open  /Applications/zoom.us.app
 
 
 # cycle through windows

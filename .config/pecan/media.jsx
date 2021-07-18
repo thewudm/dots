@@ -2,7 +2,7 @@ const command = 'osascript pecan/scripts/media';
 const refreshFrequency = 10000; // ms
 
 const render = ({ output }) => {
-    if (`${output}`.length != 0 && `${output}` != '😂') {
+    if (`${output}`.length != 0 && `${output}` != 'undefined') {
 	let out = output.split("\n");
 	return (
 	    <div class='screen'><div class="holder">

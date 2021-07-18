@@ -1,4 +1,4 @@
-Dots for my setup.
+# Dots for my setup.
 
 Ignore the ```.DS_Store``` file because it is something with MacOS I can't figure out.
 
